@@ -64,7 +64,8 @@ export class InvoiceService {
             `CUST-${1000 + i}`,                     // Customer ID
             customers[i],                           // Customer
             itemsList[i],                           // Items
-            17                                      // Tax percentage (17%)
+            17,                                     // Tax percentage (17%)
+            500                                      
           );
           invoices.push(invoice);
         }
@@ -125,7 +126,8 @@ export class InvoiceService {
       'CUST-98765',
       customer,
       items,
-      17 // Tax Percentage (17%)
+      17, // Tax Percentage (17%),
+      500
     );
 
     return invoice;

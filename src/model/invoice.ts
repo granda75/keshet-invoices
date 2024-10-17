@@ -12,6 +12,7 @@ export class Invoice {
     customer: Customer;
     items: InvoiceItem[] = [];
     taxPercentage: number;
+    totalAmount: number;
   
     constructor(invoiceNumber: string, 
                 invoiceName: string,
@@ -21,7 +22,8 @@ export class Invoice {
                 customerId: string, 
                 customer: Customer, 
                 items: InvoiceItem[], 
-                taxPercentage: number) {
+                taxPercentage: number,
+                totalAmount: number) {
 
       this.invoiceNumber = invoiceNumber;
       this.invoiceName   = invoiceName;
@@ -32,6 +34,7 @@ export class Invoice {
       this.customer      = customer;
       this.items         = items;
       this.taxPercentage = taxPercentage;
+      this.totalAmount   = totalAmount;
     }
   
     get subtotal(): number {
@@ -42,8 +45,8 @@ export class Invoice {
       return (this.subtotal * this.taxPercentage) / 100;
     }
   
-    get totalAmount(): number {
-      return this.subtotal + this.taxAmount;
-    }
+    // get totalAmount(): number {
+    //   return this.subtotal + this.taxAmount;
+    // }
   }
   
