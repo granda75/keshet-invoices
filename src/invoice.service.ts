@@ -2,12 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { InvoiceItem } from './model/invoice.item';
 import { Invoice } from './model/invoice';
 import { Customer } from './model/customer';
+import { InvoiceStatus } from './model/invoice-status';
 
 
 @Injectable()
 export class InvoiceService {
 
-     INVOICES_QUANTITY : number  = 7;
+     INVOICES_QUANTITY : number  = 9;
 
     getInvoiceList(): Invoice[] {
         const invoices: Invoice[] = [];
@@ -40,7 +41,9 @@ export class InvoiceService {
           'Full Package - Tech Innovators',
           'Documentary & Sports - Future Works',
           'Basic and News - Optima Solutions',
-          'Sports & HD - Pinnacle Holdings'
+          'Sports & HD - Pinnacle Holdings',
+          'Documentary & Sports - Future Works',
+          'Basic and News - Optima Solutions'
         ];
       
         const supplierNames = [
@@ -50,7 +53,9 @@ export class InvoiceService {
           'StreamingWorld Inc.',
           'FutureTV Providers',
           'Optimized Media Services',
-          'Pinnacle Media Distributors'
+          'Pinnacle Media Distributors',
+          'Optimized Media Services',
+          'FutureTV Providers'
         ];
       
        
@@ -65,10 +70,14 @@ export class InvoiceService {
             customers[i],                           // Customer
             itemsList[i],                           // Items
             17,                                     // Tax percentage (17%)
-            500                                      
+            500,
+            (i < 3) ? InvoiceStatus.Waiting : InvoiceStatus.InProcess
           );
           invoices.push(invoice);
         }
+
+        invoices[7].invoiceStatus = InvoiceStatus.Rejected;
+        invoices[8].invoiceStatus = InvoiceStatus.Rejected;
 
         return invoices;
       }
@@ -127,7 +136,8 @@ export class InvoiceService {
       customer,
       items,
       17, // Tax Percentage (17%),
-      500
+      500,
+      InvoiceStatus.InProcess
     );
 
     return invoice;

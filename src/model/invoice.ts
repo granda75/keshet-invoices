@@ -1,4 +1,5 @@
 import { Customer } from "./customer";
+import { InvoiceStatus } from "./invoice-status";
 import { InvoiceItem } from "./invoice.item";
 
 
@@ -13,7 +14,8 @@ export class Invoice {
     items: InvoiceItem[] = [];
     taxPercentage: number;
     totalAmount: number;
-  
+    invoiceStatus: InvoiceStatus;
+
     constructor(invoiceNumber: string, 
                 invoiceName: string,
                 supplierName: string,
@@ -23,7 +25,8 @@ export class Invoice {
                 customer: Customer, 
                 items: InvoiceItem[], 
                 taxPercentage: number,
-                totalAmount: number) {
+                totalAmount: number,
+                invoiceStatus: InvoiceStatus) {
 
       this.invoiceNumber = invoiceNumber;
       this.invoiceName   = invoiceName;
@@ -35,6 +38,7 @@ export class Invoice {
       this.items         = items;
       this.taxPercentage = taxPercentage;
       this.totalAmount   = totalAmount;
+      this.invoiceStatus = invoiceStatus;
     }
   
     get subtotal(): number {
