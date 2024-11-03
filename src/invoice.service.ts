@@ -64,8 +64,8 @@ export class InvoiceService {
             `INV-100${i + 1}`,                      // Invoice number
             invoiceNames[i],                        // Invoice name
             supplierNames[i],                       // Supplier name
-            (i < 4) ? new Date('2024-10-08'): new Date('2024-10-10'),                
-            new Date('2024-10-22'),                 // Due date
+            (i < 4) ? new Date('2024-11-03'): new Date('2024-11-05'),                
+            new Date('2024-22-10'),                 // Due date
             `CUST-${1000 + i}`,                     // Customer ID
             customers[i],                           // Customer
             itemsList[i],                           // Items
@@ -130,8 +130,8 @@ export class InvoiceService {
       'INV-12345',
       "TV package",  
       "Yes",
-      new Date('2024-10-08'),
-      new Date('2024-10-22'),
+      new Date('2024-08-10'),
+      new Date('2024-22-10'),
       'CUST-98765',
       customer,
       items,
